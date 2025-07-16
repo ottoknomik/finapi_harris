@@ -5,6 +5,15 @@
 
 trigger: none
 
+resources:
+  pipelines:
+    - pipeline: buildPipeline
+      source: finapi_harris_deploy
+      trigger:
+        branches:
+          include:
+            - main
+
 pool:
    name: student-lab-pool
 
