@@ -135,7 +135,7 @@ def slow_endpoint():
     return "This was a slow response after 5 seconds"
 
 
-@app.route('/api/slow-endpoint')
+    @app.route('/api/slow-endpoint')
 def slow_endpoint():
     time.sleep(5)
     return "This was a slow response after 5 seconds"
