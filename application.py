@@ -83,27 +83,6 @@ def update_portfolio(portfolio_id):
 def delete_portfolio(portfolio_id):
     return jsonify({"status": "success", "message": f"Portfolio {portfolio_id} deleted."})
 
-@app.route('/high-cpu')
-def high_cpu():
-    # Simulate CPU load by calculating primes
-    n = 50000
-    primes = []
-    for num in range(2, n):
-        is_prime = True
-        for i in range(2, int(math.sqrt(num)) + 1):
-            if num % i == 0:
-                is_prime = False
-                break
-        if is_prime:
-            primes.append(num)
-    return f"Calculated {len(primes)} prime numbers."
-
-@app.route('/high-memory')
-def high_memory():
-    # Simulate memory load
-    data = ['x' * 1024 * 1024] * 500  # ~500MB in-memory array
-    time.sleep(5)
-    return f"Allocated {len(data)} MB of memory temporarily."
 
 @app.route("/api/list-reports", methods=["GET"])
 def list_csv_reports():
