@@ -114,10 +114,5 @@ def slow_endpoint():
     return "This was a slow response after 5 seconds"
 
 
-    @app.route('/api/slow-endpoint')
-def slow_endpoint():
-    time.sleep(5)
-    return "This was a slow response after 5 seconds"
-
 
 # IMPORTANT: No app.run() when deploying to Azure Linux App Service
