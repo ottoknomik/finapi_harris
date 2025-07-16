@@ -1,0 +1,31 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+pool:
+   name: student-lab-pool
+
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.10'
+    displayName: "Use Python 3.10"
+
+  - script: |
+      python -m pip install --upgrade pip
+      pip install pytest requests
+    displayName: "Install dependencies"
+
+  - script: |
+      pytest -s tests/smoke_tests.py --junitxml=smoke-results.xml
+    displayName: "Run full smoke test suite"
+
+  - task: PublishTestResults@2
+    condition: always()   
+    inputs:
+      testResultsFiles: 'smoke-results.xml'
+      testRunTitle: 'Post-deployment Smoke Test'
+      failTaskOnFailedTests: true
