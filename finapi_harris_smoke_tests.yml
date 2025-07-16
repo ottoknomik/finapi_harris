@@ -24,8 +24,8 @@ pool:
 steps:
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: '3.12'
-    displayName: "Use Python 3.12"
+      versionSpec: '3.14'
+    displayName: "Use Python 3.14"
 
   - script: |
       python -m pip install --upgrade pip
